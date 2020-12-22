@@ -37,3 +37,21 @@
     display: block;
     padding: 2px 0 0 15px;
 }
+
+.success {
+    color: #28a745;
+    display: block;
+    padding: 2px 0 0 15px;
+}
+
+.detroy {
+    width: 110px;
+}
+
+.detroy__form {
+    display: contents;
+}
+
+.detroy__form__btn {
+    width: 37.48%;
+}

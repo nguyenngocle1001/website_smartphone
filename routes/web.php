@@ -14,5 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin/roles', 'RolesController@index');
-Route::match(['get', 'post'], 'admin/roles/new', 'RolesController@add')->name('addroles');
+Route::resource('adminroles', 'Admin\RolesController');

@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="role-list.html">
+                    <a href="/adminroles">
                         <i class="fa fa-book mr-2"></i> Quản lý quyền
                     </a>
                 </li>

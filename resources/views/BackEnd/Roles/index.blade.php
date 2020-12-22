@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-8">
-        <a href="{{ route('addroles') }}" class="btn btn-primary">Thêm mới</a>
+        <a href="{{ route('adminroles.create') }}" class="btn btn-primary">Thêm mới</a>
     </div>
     <div class="col-md-4">
         <div class="input-group">
@@ -26,20 +26,28 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>admin</td>
-            <td>đây là admin</td>
-            <td>
-                <a href="role-edit.html" class="btn btn-sm btn-info">
-                    <i class="fa fa-pencil-square-o"></i>
-                </a>
-                <a href="#" class="btn btn-sm btn-danger">
-                    <i class="fa fa-trash-o"></i>
-                </a>
-            </td>
-        </tr>
-       
+        @for($i = 0; $i<count($roles); $i++)
+            <tr>
+                <td>{{$i+1}}</td>
+                <td>{{ $roles[$i]->RoleName }}</td>
+                <td>{{ $roles[$i]->Description }}</td>
+                <td class="detroy">
+                    <a href="{{ route('adminroles.edit', $roles[$i]->RoleId) }}" class="btn btn-sm btn-info">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    
+                    <form class="detroy__form" action="{{ route('adminroles.destroy', $roles[$i]->RoleId) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-sm btn-danger detroy__form__btn"><i class="fa fa-trash-o"></i></button>
+                    </form>
+                </td>
+            </tr>
+        @endfor
     </tbody>
 </table>
+@if(isset($alert))
+    <p>{{$alert}}</p>
+@endisset
+
 @endsection
