@@ -46,8 +46,9 @@
         @endfor
     </tbody>
 </table>
-@if(isset($alert))
-    <p>{{$alert}}</p>
-@endisset
-
+@if(session('notice'))
+<script>
+    alert("{{session('notice')}}");
+</script>
+@endif
 @endsection

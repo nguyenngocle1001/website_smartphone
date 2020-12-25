@@ -38,20 +38,22 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $request->validate([
+        $request->validate([
             'name' => 'required',
             'description' => 'required',
         ]);
 
-        if (isset($validator)) {
-            $name = $request->input('name');
-            $description = $request->input('description');
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $countHasData = DB::table('roles')->where('RoleName', $name)->count();
+        if ($countHasData <= 0) {
             DB::table('roles')->insert([
                 'RoleName' => $name,
                 'Description' => $description
             ]);
-        }
-        return redirect()->route('adminroles.create');
+            $notice = '<span class="success">Đã thêm thành công</span>';
+        } else $notice = '<span class="error">Trùng tên quyền</span>';
+        return redirect()->route('adminroles.create')->with('notice', $notice);
     }
 
     /**
@@ -86,21 +88,23 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $request->validate([
+        $request->validate([
             'name' => 'required',
             'description' => 'required',
         ]);
 
-        if (isset($validator)) {
-            $name = $request->input('name');
-            $description = $request->input('description');
+        $name = $request->input('name');
+        $description = $request->input('description');
+
+        $countHasData = DB::table('roles')->where('RoleName', $name)->count();
+        if ($countHasData <= 0) {
             DB::table('roles')->where('RoleId', $id)->update([
                 'RoleName' => $name,
                 'Description' => $description
             ]);
             return redirect()->route('adminroles.index');
-        }
-        return redirect()->route('adminroles.edit', $id);
+        } else $notice = '<span class="error">Trùng tên quyền</span>';
+        return back()->with('notice', $notice);
     }
 
     /**
@@ -114,7 +118,8 @@ class RolesController extends Controller
         $data = DB::table('users')->where('RoleID', $id)->get();
         if (count($data) == 0) {
             DB::table('roles')->where('RoleId', $id)->delete();
-        }
-        return redirect()->route('adminroles.index');
+            $notice = 'Đã xóa';
+        } else $notice = 'Quyền này không thể xóa';
+        return back()->with('notice', $notice);
     }
 }

@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('adminroles', 'Admin\RolesController');
+Route::resource('adminusers', 'Admin\UsersController');

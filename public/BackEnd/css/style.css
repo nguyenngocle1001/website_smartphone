@@ -55,3 +55,14 @@
 .detroy__form__btn {
     width: 37.48%;
 }
+
+.danger__box {
+    margin-top: 20px;
+}
+
+.image {
+    width: 120px;
+    height: 100px;
+    background: no-repeat center center;
+    background-size: contain;
+}

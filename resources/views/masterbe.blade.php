@@ -23,12 +23,12 @@
             <ul class="list-group rounded-0">
                 <li class="dashboard">DASHBOARD</li>
                 <li>
-                    <a href="user-list.html">
+                    <a href="{{ route('adminusers.index') }}">
                         <i class="fa fa-user mr-2"></i> Quản lý thành viên
                     </a>
                 </li>
                 <li>
-                    <a href="/adminroles">
+                    <a href="{{ route('adminroles.index') }}">
                         <i class="fa fa-book mr-2"></i> Quản lý quyền
                     </a>
                 </li>
