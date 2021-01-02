@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('admin', function () {
+    return view('BackEnd.index');
+})->name('backendhome');
 Route::resource('adminroles', 'Admin\RolesController');
 Route::resource('adminusers', 'Admin\UsersController');
+Route::get('admin/roles/load', 'Admin\LoadDataController@LoadDataRoles')->name('loadroles');

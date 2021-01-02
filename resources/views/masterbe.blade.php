@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -10,8 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('BackEnd/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href='{{asset('BackEnd/css/style.css')}}'>
+    <link rel="stylesheet" href="{{ asset('BackEnd/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href='{{ asset('BackEnd/css/style.css') }}'>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
         <div id="side-bar">
             <div class="logo">ADMIN PAGE</div>
             <ul class="list-group rounded-0">
-                <li class="dashboard">DASHBOARD</li>
+                <li class="dashboard"><a href="{{ route('backendhome') }}">DASHBOARD</a></li>
                 <li>
                     <a href="{{ route('adminusers.index') }}">
                         <i class="fa fa-user mr-2"></i> Quản lý thành viên
@@ -48,7 +49,6 @@
         <div id="admin-wrapper">
             <!-- HEADER -->
             <nav class="navbar navbar-expand-sm navbar-light bg-light w-100">
-                <a class="navbar-brand" href="#"><i class="fa fa-align-justify"></i></a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                     data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                     aria-label="Toggle navigation"></button>
@@ -75,9 +75,8 @@
             </section>
         </div>
     </div>
-    <script src="{{asset('BackEnd/js/jquery.slim.min.js')}}"></script>
-    <script src="{{asset('BackEnd/js/popper.min.js')}}"></script>
-    <script src="{{asset('BackEnd/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('BackEnd/js/popper.min.js') }}"></script>
+    <script src="{{ asset('BackEnd/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

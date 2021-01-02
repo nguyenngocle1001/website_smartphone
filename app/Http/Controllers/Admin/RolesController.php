@@ -16,8 +16,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = DB::table('roles')->select('*')->get('*');
-        return view('BackEnd.Roles.index', ['roles' => $roles]);
+        return view('BackEnd.Roles.index');
     }
 
     /**
@@ -41,6 +40,9 @@ class RolesController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
+        ], [
+            'name.required' => 'Chưa nhập tên quyền',
+            'description.required' => 'Chưa nhập mô tả quyền'
         ]);
 
         $name = $request->input('name');
@@ -53,7 +55,24 @@ class RolesController extends Controller
             ]);
             $notice = '<span class="success">Đã thêm thành công</span>';
         } else $notice = '<span class="error">Trùng tên quyền</span>';
-        return redirect()->route('adminroles.create')->with('notice', $notice);
+        return $notice;
+        //====================//
+        // $request->validate([
+        //     'name' => 'required',
+        //     'description' => 'required',
+        // ]);
+
+        // $name = $request->input('name');
+        // $description = $request->input('description');
+        // $countHasData = DB::table('roles')->where('RoleName', $name)->count();
+        // if ($countHasData <= 0) {
+        //     DB::table('roles')->insert([
+        //         'RoleName' => $name,
+        //         'Description' => $description
+        //     ]);
+        //     $notice = '<span class="success">Đã thêm thành công</span>';
+        // } else $notice = '<span class="error">Trùng tên quyền</span>';
+        // return redirect()->route('adminroles.create')->with('notice', $notice);
     }
 
     /**
@@ -88,23 +107,30 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+            ],
+            [
+                'name.required' => 'Chưa nhập tên quyền',
+                'description.required' => 'Chưa nhập mô tả quyền'
+            ]
+        );
 
         $name = $request->input('name');
         $description = $request->input('description');
 
-        $countHasData = DB::table('roles')->where('RoleName', $name)->count();
+        $countHasData = DB::table('roles')->where('RoleName', $name)->where('RoleId', '<>', $id)->get()->count();
         if ($countHasData <= 0) {
             DB::table('roles')->where('RoleId', $id)->update([
                 'RoleName' => $name,
                 'Description' => $description
             ]);
-            return redirect()->route('adminroles.index');
-        } else $notice = '<span class="error">Trùng tên quyền</span>';
-        return back()->with('notice', $notice);
+            return '<span class="success">Cập nhật thành công</span>';
+        }
+        return '<span class="error">Trùng tên quyền</span>';
+        // return back()->with('notice', $notice);
     }
 
     /**
@@ -120,6 +146,6 @@ class RolesController extends Controller
             DB::table('roles')->where('RoleId', $id)->delete();
             $notice = 'Đã xóa';
         } else $notice = 'Quyền này không thể xóa';
-        return back()->with('notice', $notice);
+        return $notice;
     }
 }
