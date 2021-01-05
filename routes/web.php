@@ -15,6 +15,5 @@ Route::get('admin/roles/load', 'Admin\LoadDataController@LoadDataRoles')->name('
 //-----home
 Route::get('/', 'User\HomeController@Index')->name('home');
 //-----product
-Route::get('/product/hot', 'User\ProductController@HotProduct')->name('hotproduct');
-Route::get('/product/new', 'User\ProductController@NewProduct')->name('newproduct');
+Route::get('/products', 'User\ProductController@Index')->name('products');
 Route::get('/product/detail', 'User\ProductController@DetailProduct')->name('details');

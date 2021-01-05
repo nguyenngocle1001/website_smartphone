@@ -79,7 +79,7 @@ class UsersController extends Controller
         if ($countHasData <= 0) {
             DB::table('users')->insert([
                 'User_Name' => $username,
-                'Password' => Crypt::encrypt($password),
+                'Password' => md5($password),
                 'FullName' => $fullname,
                 'Phone' => $tel,
                 'Address' => $address,
@@ -115,10 +115,6 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = DB::table('users')->where('User_Id', $id)->first();
-        try {
-            $user->Password = Crypt::decrypt($user->Password);
-        } catch (DecryptException $e) {
-        }
         $roles = DB::table('roles')->select('*')->get();
         return view('BackEnd.Users.edit', ['user' => $user], ['roles' => $roles]);
     }
@@ -134,14 +130,12 @@ class UsersController extends Controller
     {
         $request->validate(
             [
-                'password' => 'required',
                 'fullname' => 'required',
                 'tel' => 'required',
                 'address' => 'required',
                 'email' => 'required',
             ],
             [
-                'password.required' => 'Bạn chưa nhập mât khẩu',
                 'fullname.required' => 'Bạn chưa nhập tên',
                 'tel.required' => 'Bạn chưa nhập số điện thoại',
                 'address.required' => 'Bạn chưa nhập địa chỉ',
@@ -149,7 +143,6 @@ class UsersController extends Controller
             ]
         );
 
-        $password = $request->input('password');
         $fullname = $request->input('fullname');
         $tel = $request->input('tel');
         $address = $request->input('address');
@@ -158,7 +151,6 @@ class UsersController extends Controller
         $avatar = $request->file('avatar');
         if ($avatar == null) {
             DB::table('users')->where('User_Id', $id)->update([
-                'Password' => Crypt::encrypt($password),
                 'FullName' => $fullname,
                 'Phone' => $tel,
                 'Address' => $address,
@@ -168,7 +160,6 @@ class UsersController extends Controller
         } else {
             $name = $avatar->getClientOriginalName();
             DB::table('users')->where('User_Id', $id)->update([
-                'Password' => Crypt::encrypt($password),
                 'FullName' => $fullname,
                 'Phone' => $tel,
                 'Address' => $address,

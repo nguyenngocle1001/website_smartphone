@@ -60,7 +60,7 @@
             </div>
             <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-success">Lưu lại</button>
-                <a class="btn btn-secondary" href="user-list.html">Quay lại</a>
+                <a class="btn btn-secondary" href="{{ route('adminusers.index') }}">Quay lại</a>
             </div>
             <div class="col-12 mt-3">
                 <div class="result">
@@ -120,13 +120,4 @@
         }
 
     </script>
-    {{-- @if ($errors->any())
-        <div class="danger__box alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif --}}
 @endsection

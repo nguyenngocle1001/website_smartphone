@@ -4,19 +4,20 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public function NewProduct()
+
+    public function Index()
     {
-        return view('FrontEnd.Products.NewProducts');
+        $products = DB::table('products')->paginate(9);
+        return view('FrontEnd.Products.Products', compact('products'));
     }
-    public function HotProduct()
-    {
-        return view('FrontEnd.Products.HotProducts');
-    }
+
     public function DetailProduct()
     {
+
         return view('FrontEnd.Products.DetailProduct');
     }
 }

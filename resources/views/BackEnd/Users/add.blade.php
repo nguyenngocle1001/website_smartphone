@@ -56,7 +56,7 @@
             </div>
             <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-success">Lưu lại</button>
-                <a class="btn btn-secondary" href="user-list.html">Quay lại</a>
+                <a class="btn btn-secondary" href="{{ route('adminusers.index') }}">Quay lại</a>
             </div>
             <div class="col-12 mt-3">
                 <div class="result">
@@ -87,6 +87,7 @@
                     processData: false,
                     success: function(data) {
                         $('.result').html(data);
+                        document.querySelector('.form').reset();
                     },
                     error: function(data) {
                         $('.result').html('');

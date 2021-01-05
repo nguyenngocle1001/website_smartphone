@@ -49,6 +49,7 @@
                     processData: false,
                     success: function(data) {
                         $('.result').html(data);
+                        window.location = "{{ route('adminroles.index') }}";
                     },
                     error: function(data) {
                         $('.result').html('');

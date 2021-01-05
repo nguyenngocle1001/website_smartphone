@@ -49,6 +49,9 @@
                     processData: false,
                     success: function(data) {
                         $('.result').html(data);
+                        document.querySelector('.form').reset();
+                        $('.lblNameRole').html('');
+                        $('.lblDescription').html('');
                     },
                     error: function(data) {
                         $('.result').html('');

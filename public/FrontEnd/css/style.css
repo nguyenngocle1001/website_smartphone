@@ -659,6 +659,7 @@ li.w3pages .dropdown-menu > li > a:hover{
 .agile_ecommerce_tab_left {
     padding-left: 0;
 	text-align: center;
+	margin-bottom: 1rem;
 }
 .agile_ecommerce_tabs {
     padding: 2em 0 0;
@@ -667,6 +668,12 @@ li.w3pages .dropdown-menu > li > a:hover{
 	margin:2em 0 0;
 }
 .agile_ecommerce_tab_left h5 a {
+	display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    height: 2em;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
     font-size: 1.2em;
     color: #ff5063;
     text-decoration: none;
@@ -686,6 +693,7 @@ li.w3pages .dropdown-menu > li > a:hover{
     font-weight: 600;
 }
 .simpleCart_shelfItem p span{
+	display: block;
 	color: #999;
     font-size: .8em;
     text-decoration: line-through;

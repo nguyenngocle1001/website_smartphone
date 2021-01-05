@@ -52,6 +52,7 @@
 
     </script>
     <!-- //end-smooth-scrolling -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
