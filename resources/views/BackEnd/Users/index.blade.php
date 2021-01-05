@@ -34,16 +34,16 @@
                     <td>{{ $users[$i]->FullName }}</td>
                     <td>
                         <div class="image"
-                            style="background-image: url({{ URL::asset('storage/avatars/' . $users[$i]->UserId . '/' . $users[$i]->Avatar) }})">
+                            style="background-image: url({{ URL::asset('storage/avatars/' . $users[$i]->User_Id . '/' . $users[$i]->Avatar) }})">
                         </div>
                     </td>
                     <td>{{ $users[$i]->Email }}</td>
                     <td>{{ $users[$i]->Phone }}</td>
                     <td>
-                        <a href="{{ route('adminusers.edit', $users[$i]->UserId) }}" class="btn btn-sm btn-info">
+                        <a href="{{ route('adminusers.edit', $users[$i]->User_Id) }}" class="btn btn-sm btn-info">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
-                        <form class="detroy__form" action="{{ route('adminroles.destroy', $users[$i]->UserId) }}"
+                        <form class="detroy__form" action="{{ route('adminroles.destroy', $users[$i]->User_Id) }}"
                             method="post">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
@@ -54,4 +54,7 @@
             @endfor
         </tbody>
     </table>
+    <div>
+        {{ $users->links() }}
+    </div>
 @endsection

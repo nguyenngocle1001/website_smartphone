@@ -16,7 +16,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        return view('BackEnd.Roles.index');
+        $roles = DB::table('roles')->get();
+        return view('BackEnd.Roles.index', ['roles' => $roles]);
     }
 
     /**
@@ -47,11 +48,11 @@ class RolesController extends Controller
 
         $name = $request->input('name');
         $description = $request->input('description');
-        $countHasData = DB::table('roles')->where('RoleName', $name)->count();
+        $countHasData = DB::table('roles')->where('Role_Name', $name)->count();
         if ($countHasData <= 0) {
             DB::table('roles')->insert([
-                'RoleName' => $name,
-                'Description' => $description
+                'Role_Name' => $name,
+                'Descripton' => $description
             ]);
             $notice = '<span class="success">Đã thêm thành công</span>';
         } else $notice = '<span class="error">Trùng tên quyền</span>';
@@ -94,7 +95,7 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        $role = DB::table('roles')->where('RoleID', $id)->first();
+        $role = DB::table('roles')->where('Role_ID', $id)->first();
         return view('BackEnd.Roles.edit', ['role' => $role]);
     }
 
@@ -121,11 +122,11 @@ class RolesController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
 
-        $countHasData = DB::table('roles')->where('RoleName', $name)->where('RoleId', '<>', $id)->get()->count();
+        $countHasData = DB::table('roles')->where('Role_Name', $name)->where('Role_Id', '<>', $id)->get()->count();
         if ($countHasData <= 0) {
-            DB::table('roles')->where('RoleId', $id)->update([
-                'RoleName' => $name,
-                'Description' => $description
+            DB::table('roles')->where('Role_Id', $id)->update([
+                'Role_Name' => $name,
+                'Descripton' => $description
             ]);
             return '<span class="success">Cập nhật thành công</span>';
         }
@@ -141,11 +142,11 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        $data = DB::table('users')->where('RoleID', $id)->get();
+        $data = DB::table('users')->where('Role_ID', $id)->get();
         if (count($data) == 0) {
-            DB::table('roles')->where('RoleId', $id)->delete();
+            DB::table('roles')->where('Role_Id', $id)->delete();
             $notice = 'Đã xóa';
         } else $notice = 'Quyền này không thể xóa';
-        return $notice;
+        return back()->with($notice);
     }
 }

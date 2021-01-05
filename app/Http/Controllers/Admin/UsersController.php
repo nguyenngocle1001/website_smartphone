@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->select('*')->get('*');
+        $users = DB::table('users')->paginate(3);
         return view('BackEnd.Users.index', ['users' => $users]);
     }
 
@@ -48,7 +48,6 @@ class UsersController extends Controller
                 'username' => 'required',
                 'password' => 'required',
                 'fullname' => 'required',
-                'birthday' => 'required',
                 'tel' => 'required',
                 'address' => 'required',
                 'email' => 'required',
@@ -58,7 +57,6 @@ class UsersController extends Controller
                 'username.required' => 'Bạn chưa nhập tài khoản',
                 'password.required' => 'Bạn chưa nhập mât khẩu',
                 'fullname.required' => 'Bạn chưa nhập tên',
-                'birthday.required' => 'Bạn chưa chọn ngày sinh',
                 'tel.required' => 'Bạn chưa nhập số điện thoại',
                 'address.required' => 'Bạn chưa nhập địa chỉ',
                 'email.required' => 'Bạn chưa nhập email',
@@ -69,7 +67,6 @@ class UsersController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $fullname = $request->input('fullname');
-        $birthday = $request->input('birthday');
         $tel = $request->input('tel');
         $address = $request->input('address');
         $email = $request->input('email');
@@ -78,23 +75,23 @@ class UsersController extends Controller
         $name = $avatar->getClientOriginalName();
 
 
-        $countHasData = DB::table('users')->where('UserName', $username)->count();
+        $countHasData = DB::table('users')->where('User_Name', $username)->count();
         if ($countHasData <= 0) {
             DB::table('users')->insert([
-                'UserName' => $username,
+                'User_Name' => $username,
                 'Password' => Crypt::encrypt($password),
                 'FullName' => $fullname,
-                'Birthday' => $birthday,
                 'Phone' => $tel,
                 'Address' => $address,
                 'Email' => $email,
                 'Avatar' => $name,
-                'RoleId' => $roleid
+                'Role_Id' => $roleid
             ]);
-            $userid = DB::table('users')->where('Username', $username)->first()->UserId;
+            $userid = DB::table('users')->where('User_Name', $username)->first()->User_Id;
             $notice = '<span class="success">Đã thêm thành công</span>';
             $avatar->storeAs('/public/avatars/' . $userid, $name);
         } else $notice = '<span class="error">Trùng tên người dùng</span>';
+        return $notice;
         return redirect()->route('adminusers.create')->with('notice', $notice);
     }
 
@@ -117,7 +114,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = DB::table('users')->where('UserId', $id)->first();
+        $user = DB::table('users')->where('User_Id', $id)->first();
         try {
             $user->Password = Crypt::decrypt($user->Password);
         } catch (DecryptException $e) {
@@ -137,19 +134,15 @@ class UsersController extends Controller
     {
         $request->validate(
             [
-                'username' => 'required',
                 'password' => 'required',
                 'fullname' => 'required',
-                'birthday' => 'required',
                 'tel' => 'required',
                 'address' => 'required',
                 'email' => 'required',
             ],
             [
-                'username.required' => 'Bạn chưa nhập tài khoản',
                 'password.required' => 'Bạn chưa nhập mât khẩu',
                 'fullname.required' => 'Bạn chưa nhập tên',
-                'birthday.required' => 'Bạn chưa chọn ngày sinh',
                 'tel.required' => 'Bạn chưa nhập số điện thoại',
                 'address.required' => 'Bạn chưa nhập địa chỉ',
                 'email.required' => 'Bạn chưa nhập email',
@@ -158,38 +151,35 @@ class UsersController extends Controller
 
         $password = $request->input('password');
         $fullname = $request->input('fullname');
-        $birthday = $request->input('birthday');
         $tel = $request->input('tel');
         $address = $request->input('address');
         $email = $request->input('email');
         $roleid = $request->input('role');
         $avatar = $request->file('avatar');
         if ($avatar == null) {
-            DB::table('users')->where('UserId', $id)->update([
+            DB::table('users')->where('User_Id', $id)->update([
                 'Password' => Crypt::encrypt($password),
                 'FullName' => $fullname,
-                'Birthday' => $birthday,
                 'Phone' => $tel,
                 'Address' => $address,
                 'Email' => $email,
-                'RoleId' => $roleid
+                'Role_Id' => $roleid
             ]);
         } else {
             $name = $avatar->getClientOriginalName();
-            DB::table('users')->where('UserId', $id)->update([
+            DB::table('users')->where('User_Id', $id)->update([
                 'Password' => Crypt::encrypt($password),
                 'FullName' => $fullname,
-                'Birthday' => $birthday,
                 'Phone' => $tel,
                 'Address' => $address,
                 'Email' => $email,
                 'Avatar' => $name,
-                'RoleId' => $roleid
+                'Role_Id' => $roleid
             ]);
             $avatar->storeAs('/public/avatars/' . $id, $name);
         }
 
-        return redirect()->route('adminusers.index');
+        return 'Đã sửa';
     }
 
     /**

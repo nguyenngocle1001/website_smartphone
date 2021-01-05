@@ -3,8 +3,6 @@
     Danh sách quyền
 @endsection
 @section('content')
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <div class="row">
         <div class="col-md-8">
             <a href="{{ route('adminroles.create') }}" class="btn btn-primary">Thêm mới</a>
@@ -28,17 +26,17 @@
             </tr>
         </thead>
         <tbody id="data">
-            {{-- @for ($i = 0; $i < count($roles); $i++)
+            @for ($i = 0; $i < count($roles); $i++)
                 <tr>
                     <td>{{ $i + 1 }}</td>
-                    <td>{{ $roles[$i]->RoleName }}</td>
-                    <td>{{ $roles[$i]->Description }}</td>
+                    <td>{{ $roles[$i]->Role_Name }}</td>
+                    <td>{{ $roles[$i]->Descripton }}</td>
                     <td class="detroy">
-                        <a href="{{ route('adminroles.edit', $roles[$i]->RoleId) }}" class="btn btn-sm btn-info">
+                        <a href="{{ route('adminroles.edit', $roles[$i]->Role_Id) }}" class="btn btn-sm btn-info">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
 
-                        <form class="detroy__form" action="{{ route('adminroles.destroy', $roles[$i]->RoleId) }}"
+                        <form class="detroy__form" action="{{ route('adminroles.destroy', $roles[$i]->Role_Id) }}"
                             method="post">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
@@ -46,45 +44,9 @@
                         </form>
                     </td>
                 </tr>
-            @endfor --}}
+            @endfor
         </tbody>
     </table>
-    <script>
-        function loadRoles() {
-            $.ajax({
-                url: "{{ route('loadroles') }}",
-                type: 'GET',
-                success: function(data) {
-                    $('#data').html(data);
-                }
-            })
-        }
-        loadRoles();
-
-        console.log($(".deleteRole"));
-
-        $(".deleteRole").click(function() {
-            var id = $(this).data("id");
-            var token = $(this).data("token");
-            console.log(token);
-            // $.ajax({
-            //     url: "user/delete/" + id,
-            //     type: 'PUT',
-            //     dataType: "JSON",
-            //     data: {
-            //         "id": id,
-            //         "_method": 'DELETE',
-            //         "_token": token,
-            //     },
-            //     success: function() {
-            //         console.log("it Work");
-            //     }
-            // });
-
-            // console.log("It failed");
-        });
-
-    </script>
     {{-- <script src="{{ asset('BackEnd/js/jquery.slim.min.js') }}"></script>
     --}}
     @if (session('notice'))

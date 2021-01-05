@@ -3,20 +3,18 @@
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+// Admin
 Route::get('admin', function () {
     return view('BackEnd.index');
 })->name('backendhome');
 Route::resource('adminroles', 'Admin\RolesController');
 Route::resource('adminusers', 'Admin\UsersController');
 Route::get('admin/roles/load', 'Admin\LoadDataController@LoadDataRoles')->name('loadroles');
+
+// User
+//-----home
+Route::get('/', 'User\HomeController@Index')->name('home');
+//-----product
+Route::get('/product/hot', 'User\ProductController@HotProduct')->name('hotproduct');
+Route::get('/product/new', 'User\ProductController@NewProduct')->name('newproduct');
+Route::get('/product/detail', 'User\ProductController@DetailProduct')->name('details');
