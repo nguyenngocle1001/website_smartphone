@@ -43,11 +43,7 @@
 
                     <div class="w3ls_mobiles_grid_right_grid2">
                         <div class="w3ls_mobiles_grid_right_grid2_left">
-                            <h3>Kết quả tìm kiếm:
-                                @isset($search)
-                                    {{ $search }}
-                                @endisset
-                            </h3>
+                            <h3>Kết quả tìm kiếm:</h3>
                         </div>
                         <div class="w3ls_mobiles_grid_right_grid2_right">
                             <select name="select_item" class="select_item" onchange='genderChanged(this)'>

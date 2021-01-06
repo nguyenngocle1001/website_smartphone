@@ -16,4 +16,16 @@ Route::get('admin/roles/load', 'Admin\LoadDataController@LoadDataRoles')->name('
 Route::get('/', 'User\HomeController@Index')->name('home');
 //-----product
 Route::get('/products', 'User\ProductController@Index')->name('products');
-Route::get('/product/detail', 'User\ProductController@DetailProduct')->name('details');
+//-----detail
+Route::get('/product/detail/{id}', 'User\ProductController@DetailProduct')->name('details');
+//-----search
+Route::post('/products/search', 'User\ProductController@Search')->name('search');
+//-----filter category
+Route::get('/products/category/{id}', 'User\ProductController@ProductCategory')->name('category');
+//-----filter manufacture
+Route::get('/products/manufacture/{id}', 'User\ProductController@ProductManufacture')->name('manufacture');
+
+
+//Layout
+//-----load navigation
+Route::get('/home/navigation', 'User\HomeController@LoadNavigation')->name('navigation');

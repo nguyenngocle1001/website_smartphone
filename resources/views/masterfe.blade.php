@@ -168,9 +168,10 @@
                 <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search"
                         aria-hidden="true"></span></label>
                 <div class="search_form">
-                    <form action="#" method="post">
-                        <input type="text" name="Search" placeholder="Search...">
-                        <input type="submit" value="Send">
+                    <form action="{{ route('search') }}" method="post">
+                        @csrf
+                        <input type="text" name="search" placeholder="tìm kiếm...">
+                        <input type="submit" value="Tìm">
                     </form>
                 </div>
             </div>
@@ -187,77 +188,7 @@
     <!-- //header -->
     <!-- navigation -->
     <div class="navigation">
-        <div class="container">
-            <nav class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header nav_2">
-                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
-                        data-target="#bs-megadropdown-tabs">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.html" class="act">Trang chủ</a></li>
-                        <!-- Mega Menu -->
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-column columns-3">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <ul class="multi-column-dropdown">
-                                            <h6>Mobiles</h6>
-                                            <li><a href="products.html">Mobile Phones</a></li>
-                                            <li><a href="products.html">Mp3 Players <span>New</span></a></li>
-                                            <li><a href="products.html">Popular Models</a></li>
-                                            <li><a href="products.html">All Tablets<span>New</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <ul class="multi-column-dropdown">
-                                            <h6>Accessories</h6>
-                                            <li><a href="products1.html">Laptop</a></li>
-                                            <li><a href="products1.html">Desktop</a></li>
-                                            <li><a href="products1.html">Wearables <span>New</span></a></li>
-                                            <li><a href="products1.html"><i>Summer Store</i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <ul class="multi-column-dropdown">
-                                            <h6>Home</h6>
-                                            <li><a href="products2.html">Tv</a></li>
-                                            <li><a href="products2.html">Camera</a></li>
-                                            <li><a href="products2.html">AC</a></li>
-                                            <li><a href="products2.html">Grinders</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w3ls_products_pos">
-                                            <h4>30%<i>Off/-</i></h4>
-                                            <img src="{{ asset('FrontEnd/images/1.jpg') }}" alt=" "
-                                                class=" img-responsive" />
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </ul>
-                        </li>
-                        <li><a href="about.html">Liên lạc</a></li>
-                        <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">Tin tức <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="icons.html">Web Icons</a></li>
-                                <li><a href="codes.html">Short Codes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="mail.html">Giúp đỡ</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+
     </div>
     <!-- //navigation -->
     @yield('content')
@@ -290,31 +221,30 @@
                             tp Hồ Chí Minh</span>
                         </li>
                         <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                                href="mailto:info@example.com">nguyenngocle1001@gmail.com</a></li>
-                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+84919823185</li>
+                                href="mailto:nguyenngocle1001@gmail.com">nguyenngocle1001@gmail.com</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+84 919 823 185</li>
                     </ul>
                 </div>
                 <div class="col-md-3 w3_footer_grid">
                     <h3>Thông tin</h3>
                     <ul class="info">
-                        <li><a href="about.html">Thông tin</a></li>
-                        <li><a href="mail.html">Phản hồi</a></li>
-                        <li><a href="products.html">Sản phẩm đặc biệt</a></li>
+                        <li><a href="">Thông tin</a></li>
+                        <li><a href="">Phản hồi</a></li>
+                        <li><a href="">Sản phẩm đặc biệt</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 w3_footer_grid">
                     <h3>mặt hàng</h3>
                     <ul class="info">
-                        <li><a href="products.html">Điện thoại</a></li>
-                        <li><a href="products1.html">Máy tính bảng</a></li>
-                        <li><a href="products.html">Máy cũ</a></li>
+                        <li><a href="">Điện thoại</a></li>
+                        <li><a href="">Máy tính bảng</a></li>
+                        <li><a href="">Máy cũ</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 w3_footer_grid">
                     <h3>Nổi bật</h3>
                     <ul class="info">
-                        <li><a href="index.html">Trang chủ</a></li>
-                        <li><a href="products.html">Giảm giá hôm nay</a></li>
+                        <li><a href="route('home')">Trang chủ</a></li>
                     </ul>
                     <h4>Theo dõi chúng tôi</h4>
                     <div class="agileits_social_button">
@@ -359,6 +289,28 @@
 
     </script>
     <!-- //cart-js -->
+
+    <!-- ajax load navigation -->
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                header: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                cache: false,
+                url: "{{ route('navigation') }}",
+                success: function(data) {
+                    $('.navigation').html(data);
+                }
+            });
+        });
+
+    </script>
+    <!-- ajax load navigation -->
+
 </body>
 
 </html>
