@@ -81,10 +81,11 @@
                                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                                         <div class="facts">
                                             <div class="register">
-                                                <form action="#" method="post">
+                                                <form action="{{route('login')}}" method="post">
+                                                    @csrf
                                                     <input name="username" placeholder="Tên đăng nhập" type="text"
                                                         required="">
-                                                    <input name="Password" placeholder="Mật khẩu" type="password"
+                                                    <input name="password" placeholder="Mật khẩu" type="password"
                                                         required="">
                                                     <div class="sign-up">
                                                         <input type="submit" value="Đăng nhập" />
@@ -148,17 +149,25 @@
             </div>
         </div>
     </div>
-    <script>
-        $('#myModal88').modal('show');
-
-    </script>
     <!-- header modal -->
     <!-- header -->
     <div class="header" id="home1">
         <div class="container">
             <div class="w3l_login">
                 <a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user"
-                        aria-hidden="true"></span></a>
+                        aria-hidden="true">
+                              
+                </span></a>
+                
+            </div>
+            <div style="padding-top: 10px ;">
+                @if (Session::get('user_name') != null)
+                        {{Session::get('user_name')}}
+                        <a href="{{URL::to('/logout')}}">Thoát</a>
+                        <script>
+                            $('#myModal88').remove();
+                        </script>
+                        @endif  
             </div>
             <div class="w3l_logo">
                 <h1><a href="index.html">Electronic Store<span>Your stores. Your place.</span></a></h1>

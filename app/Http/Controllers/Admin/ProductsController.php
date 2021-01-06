@@ -51,7 +51,6 @@ class ProductsController extends Controller
                 'image1' => 'required',
                 'image2' => 'required',
                 'image3' => 'required',
-                'image4' => 'required'
             ],
             [
                 'prodname.required' => 'Bạn chưa nhập tên sản phẩm',
@@ -60,7 +59,6 @@ class ProductsController extends Controller
                 'image1.required' => 'Bạn chưa chọn hình mô tả 1',
                 'image2.required' => 'Bạn chưa chọn hình mô tả 2',
                 'image3.required' => 'Bạn chưa chọn hình mô tả 3',
-                'image4.required' => 'Bạn chưa chọn hình mô tả 4'
             ]
         );
 
@@ -70,14 +68,12 @@ class ProductsController extends Controller
         $image1 = $request->file('image1');
         $image2 = $request->file('image2');
         $image3 = $request->file('image3');
-        $image4 = $request->file('image4');
         $cateid = $request->input('category');
         $manuid = $request->input('manufacturers');
         
         $name1 = $image1->getClientOriginalName();
         $name2 = $image2->getClientOriginalName();
         $name3 = $image3->getClientOriginalName();
-        $name4 = $image4->getClientOriginalName();
 
 
         $countHasData = DB::table('products')->where('Prod_Name', $prodname)->count();
@@ -89,7 +85,6 @@ class ProductsController extends Controller
                 'image1' => $name1,
                 'image2' => $name2,
                 'image3' => $name3,
-                'image4' => $name4,
                 'Cate_Id' => $cateid,
                 'Manu_Id' => $manuid
             ]);
@@ -98,7 +93,6 @@ class ProductsController extends Controller
             $image1->storeAs('/public/products/' . $prodid, $name1);
             $image2->storeAs('/public/products/' . $prodid, $name2);
             $image3->storeAs('/public/products/' . $prodid, $name3);
-            $image4->storeAs('/public/products/' . $prodid, $name4);
         } else $notice = '<span class="error">Trùng tên người dùng</span>';
         return $notice;
         return redirect()->route('adminproducts.create')->with('notice', $notice);
@@ -159,14 +153,12 @@ class ProductsController extends Controller
         $image1 = $request->file('image1');
         $image2 = $request->file('image2');
         $image3 = $request->file('image3');
-        $image4 = $request->file('image4');
         $cateid = $request->input('category');
         $manuid = $request->input('manufacturers');
 ;
         $name1 = $image1->getClientOriginalName();
         $name2 = $image2->getClientOriginalName();
         $name3 = $image3->getClientOriginalName();
-        $name4 = $image4->getClientOriginalName();
 
         
         DB::table('products')->where('Prod_Id', $id)->update([
@@ -201,13 +193,6 @@ class ProductsController extends Controller
                
             ]);
             $image3->storeAs('/public/products/' . $id, $name3);
-        }
-        if($image4!=null){
-            DB::table('products')->where('Prod_Id', $id)->update([
-                'image4' => $name4,
-                
-            ]);
-            $image4->storeAs('/public/products/' . $id, $name4);
         }
 
         return 'Đã sửa';

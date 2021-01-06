@@ -12,8 +12,8 @@ Route::resource('adminusers', 'Admin\UsersController');
 Route::get('admin/roles/load', 'Admin\LoadDataController@LoadDataRoles')->name('loadroles');
 
 //Login
-Route::any('Login', 'Admin\LoginAdminController@index') ;
-Route::post('/admin_dashboard', 'Admin\LoginAdminController@dashboard') ;
+Route::any('/Login', 'Admin\LoginAdminController@index');
+Route::post('/admin_dashboard', 'Admin\LoginAdminController@dashboard');
 Route::get('/logout', 'Admin\LoginAdminController@logout');
 
 //
@@ -22,6 +22,9 @@ Route::resource('admincategorys', 'Admin\CategoryController');
 Route::resource('adminmanufacturers', 'Admin\ManufacturersController');
 //
 Route::resource('adminproducts', 'Admin\ProductsController');
+
+//User_login
+Route::post('/user_login', 'User\LoginController@Login')->name('login');
 
 // User
 //-----home

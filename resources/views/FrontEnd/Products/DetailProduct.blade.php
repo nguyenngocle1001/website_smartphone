@@ -31,16 +31,20 @@
                             <div class="thumb-image"> <img
                                     src="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }}"
                                     data-imagezoom="true" class="img-responsive" alt=""> </img>
+                            </div>
                         </li>
                         <li data-thumb="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image2 }}">
-                            <div class="thumb-imag"> <img
+                            <div class="thumb-imag">
+                                <img
                                     src="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image2 }}"
                                     data-imagezoom="true" class="img-responsive" alt=""> </img>
+                            </div>
                         </li>
                         <li data-thumb="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image3 }}">
                             <div class="thumb-image"> <img
                                     src="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image3 }}"
                                     data-imagezoom="true" class="img-responsive" alt=""> </img>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -216,11 +220,7 @@
                         <div class="w3l_related_products_grid">
                             <div class="agile_ecommerce_tab_left mobiles_grid">
                                 <div class="hs-wrapper hs-wrapper3">
-                                    <img src="{{ asset('FrontEnd/images/34.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('FrontEnd/images/35.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('FrontEnd/images/27.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('FrontEnd/images/28.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('FrontEnd/images/37.jpg') }}" alt=" " class="img-responsive" />
+                                    <div class="image__product" style="background-image: url({{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }})"></div>
                                     <div class="w3_hs_bottom">
                                         <div class="flex_ecommerce">
                                             <a href="#" data-toggle="modal"

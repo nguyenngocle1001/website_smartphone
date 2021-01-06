@@ -70,11 +70,6 @@
                     <label class="lblImage3"></label>
                     <input type="file" accept="image/x-png,image/jpeg,image/jpg" name="image3" class="form-control" />
                 </div>
-                <div id="file" class="form-group">
-                    <label>Hình mô tả 4</label>
-                    <label class="lblImage4"></label>
-                    <input type="file" accept="image/x-png,image/jpeg,image/jpg" name="image4" class="form-control" />
-                </div>
             </div>
             <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-success">Lưu lại</button>
@@ -122,7 +117,6 @@
                         notice('lblImage1', data.responseJSON.errors['image1']);
                         notice('lblImage2', data.responseJSON.errors['image2']);
                         notice('lblImage3', data.responseJSON.errors['image3']);
-                        notice('lblImage4', data.responseJSON.errors['image4']);
                     }
                 });
             });
