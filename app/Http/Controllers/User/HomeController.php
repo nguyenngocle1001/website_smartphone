@@ -19,4 +19,11 @@ class HomeController extends Controller
 
         return view('FrontEnd.index', compact('categorys', 'arrProduct', 'newProducts'));
     }
+
+    public function LoadNavigation()
+    {
+        $categorys = DB::table('categorys')->get();
+        $manufactures = DB::table('manufacturers')->get();
+        return view('FrontEnd.PartialView.Navigation', compact('categorys', 'manufactures'))->render();
+    }
 }

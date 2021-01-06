@@ -668,12 +668,6 @@ li.w3pages .dropdown-menu > li > a:hover{
 	margin:2em 0 0;
 }
 .agile_ecommerce_tab_left h5 a {
-	display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    height: 2em;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
     font-size: 1.2em;
     color: #ff5063;
     text-decoration: none;
@@ -4999,4 +4993,18 @@ td.invert-image a img {
 	.w3l_faq_grid {
 		margin-bottom: 1em;
 	}
+}
+
+.product_page_paging {
+	display: flex;
+	justify-content: center;
+}
+
+.product__title{
+	display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    height: 2em;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
 }

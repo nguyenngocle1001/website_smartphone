@@ -83,7 +83,9 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <h5><a href="single.html">{{ $product->Prod_Name }}</a></h5>
+                                                <h5><a class="product__title"
+                                                        href="{{ route('details', $product->Prod_Id) }}">{{ $product->Prod_Name }}</a>
+                                                </h5>
                                                 <div class="simpleCart_shelfItem">
                                                     <p><span>đ{{ number_format($product->Price) }}</span> <i
                                                             class="item_price">đ{{ number_format(($product->Price * 90) / 100) }}</i>
@@ -128,7 +130,9 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <h5><a href="single.html">{{ $product->Prod_Name }}</a></h5>
+                                                <h5><a class="product__title"
+                                                        href="{{ route('details', $product->Prod_Id) }}">{{ $product->Prod_Name }}</a>
+                                                </h5>
                                                 <div class="simpleCart_shelfItem">
                                                     <p><span>đ{{ number_format($product->Price) }}</span> <i
                                                             class="item_price">{{ number_format(($product->Price * 90) / 100) }}</i>
@@ -409,7 +413,8 @@
                                     </ul>
                                 </div>
                             </div>
-                            <h5><a href="single.html">{{ $product->Prod_Name }}</a></h5>
+                            <h5><a class="product__title"
+                                    href="{{ route('details', $product->Prod_Id) }}">{{ $product->Prod_Name }}</a></h5>
                             <div class="simpleCart_shelfItem">
                                 <p><span>đ{{ number_format($product->Price) }}</span> <i
                                         class="item_price">đ{{ number_format(($product->Price * 90) / 100) }}</i></p>
