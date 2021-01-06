@@ -27,17 +27,20 @@
             <div class="col-md-4 single-left">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="{{ asset('FrontEnd/images/a.jpg') }}">
-                            <div class="thumb-image"> <img src="{{ asset('FrontEnd/images/a.jpg') }}" data-imagezoom="true"
-                                    class="img-responsive" alt=""> </div>
+                        <li data-thumb="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }}">
+                            <div class="thumb-image"> <img
+                                    src="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }}"
+                                    data-imagezoom="true" class="img-responsive" alt=""> </img>
                         </li>
-                        <li data-thumb="{{ asset('FrontEnd/images/b.jpg') }}">
-                            <div class="thumb-image"> <img src="{{ asset('FrontEnd/images/b.jpg') }}" data-imagezoom="true"
-                                    class="img-responsive" alt=""> </div>
+                        <li data-thumb="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image2 }}">
+                            <div class="thumb-imag"> <img
+                                    src="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image2 }}"
+                                    data-imagezoom="true" class="img-responsive" alt=""> </img>
                         </li>
-                        <li data-thumb="{{ asset('FrontEnd/images/c.jpg') }}">
-                            <div class="thumb-image"> <img src="{{ asset('FrontEnd/images/c.jpg') }}" data-imagezoom="true"
-                                    class="img-responsive" alt=""> </div>
+                        <li data-thumb="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image3 }}">
+                            <div class="thumb-image"> <img
+                                    src="{{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image3 }}"
+                                    data-imagezoom="true" class="img-responsive" alt=""> </img>
                         </li>
                     </ul>
                 </div>

@@ -5008,3 +5008,15 @@ td.invert-image a img {
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
 }
+
+.image__product {
+	width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.image__product.showmodal {
+	height: 400px;
+}

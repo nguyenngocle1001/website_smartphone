@@ -63,10 +63,9 @@
                         @foreach ($products as $product)
                             <div class="col-md-3 agile_ecommerce_tab_left">
                                 <div class="hs-wrapper">
-                                    <img src="{{ asset('FrontEnd/images/3.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('FrontEnd/images/4.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('FrontEnd/images/5.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('FrontEnd/images/6.jpg') }}" alt=" " class="img-responsive" />
+                                    <div class="image__product"
+                                        style="background-image: url({{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }})">
+                                    </div>
                                     <div class="w3_hs_bottom">
                                         <ul>
                                             <li>
@@ -113,7 +112,9 @@
                     <section>
                         <div class="modal-body">
                             <div class="col-md-5 modal_body_left">
-                                <img src="{{ asset('FrontEnd/images/3.jpg') }}" alt=" " class="img-responsive" />
+                                <div class="image__product showmodal"
+                                    style="background-image: url({{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }})">
+                                </div>
                             </div>
                             <div class="col-md-7 modal_body_right">
                                 <h4>{{ $product->Prod_Name }}</h4>

@@ -64,14 +64,9 @@
                                         @foreach ($arrProduct[$category->Cate_Id] as $product)
                                             <div class="col-md-4 agile_ecommerce_tab_left">
                                                 <div class="hs-wrapper">
-                                                    <img src="{{ asset('FrontEnd/images/3.jpg') }}" alt=" "
-                                                        class="img-responsive" />
-                                                    <img src="{{ asset('FrontEnd/images/4.jpg') }}" alt=" "
-                                                        class="img-responsive" />
-                                                    <img src="{{ asset('FrontEnd/images/5.jpg') }}" alt=" "
-                                                        class="img-responsive" />
-                                                    <img src="{{ asset('FrontEnd/images/6.jpg') }}" alt=" "
-                                                        class="img-responsive" />
+                                                    <div class="image__product"
+                                                        style="background-image: url({{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }})">
+                                                    </div>
                                                     <div class="w3_hs_bottom">
                                                         <ul>
                                                             <li>
@@ -111,14 +106,9 @@
                                         @foreach ($arrProduct[$category->Cate_Id] as $product)
                                             <div class="col-md-4 agile_ecommerce_tab_left">
                                                 <div class="hs-wrapper">
-                                                    <img src="{{ asset('FrontEnd/images/3.jpg') }}" alt=" "
-                                                        class="img-responsive" />
-                                                    <img src="{{ asset('FrontEnd/images/4.jpg') }}" alt=" "
-                                                        class="img-responsive" />
-                                                    <img src="{{ asset('FrontEnd/images/5.jpg') }}" alt=" "
-                                                        class="img-responsive" />
-                                                    <img src="{{ asset('FrontEnd/images/6.jpg') }}" alt=" "
-                                                        class="img-responsive" />
+                                                    <div class="image__product"
+                                                        style="background-image: url({{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }})">
+                                                    </div>
                                                     <div class="w3_hs_bottom">
                                                         <ul>
                                                             <li>
@@ -398,11 +388,9 @@
                     <div class="col-md-3 agileinfo_new_products_grid">
                         <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
                             <div class="hs-wrapper hs-wrapper1">
-                                <img src="{{ asset('FrontEnd/images/25.jpg') }}" alt=" " class="img-responsive" />
-                                <img src="{{ asset('FrontEnd/images/23.jpg') }}" alt=" " class="img-responsive" />
-                                <img src="{{ asset('FrontEnd/images/24.jpg') }}" alt=" " class="img-responsive" />
-                                <img src="{{ asset('FrontEnd/images/22.jpg') }}" alt=" " class="img-responsive" />
-                                <img src="{{ asset('FrontEnd/images/26.jpg') }}" alt=" " class="img-responsive" />
+                                <div class="image__product"
+                                    style="background-image: url({{ asset('storage/products/') }}/{{ $product->Prod_Id }}/{{ $product->image1 }})">
+                                </div>
                                 <div class="w3_hs_bottom w3_hs_bottom_sub">
                                     <ul>
                                         <li>
