@@ -25,6 +25,9 @@ Route::resource('adminproducts', 'Admin\ProductsController');
 
 //User_login
 Route::post('/user_login', 'User\LoginController@Login')->name('login');
+Route::get('/user_logout', 'User\LoginController@Logout');
+
+Route::post('/user_register', 'User\RegisterController@Register');
 
 // User
 //-----home

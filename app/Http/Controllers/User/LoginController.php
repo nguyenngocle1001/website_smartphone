@@ -22,6 +22,17 @@ class LoginController extends Controller
 
             return back();
         }
-        return 'Sai mật khẩu';
+        else{
+            Session::put('message','Sai mật khẩu hoặc tài khoản');
+            return back();
+        }
     }
+    public function Logout(){
+        Session::put('user_name',null);
+        Session::put('user_id',null);
+        return back();
+    }
+
+    
 }
+

@@ -87,6 +87,13 @@
                                                         required="">
                                                     <input name="password" placeholder="Mật khẩu" type="password"
                                                         required="">
+                                                        <?php
+                                                        $message = Session::get('message');
+                                                        if($message){
+                                                            echo '<p style="color:red; text-align:center">',$message,'</p>';
+                                                            Session::put('message',null);
+                                                        }
+                                                    ?>
                                                     <div class="sign-up">
                                                         <input type="submit" value="Đăng nhập" />
                                                     </div>
@@ -97,19 +104,34 @@
                                     <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
                                         <div class="facts">
                                             <div class="register">
-                                                <form action="#" method="post">
-                                                    <input placeholder="Tên người dùng" name="Name" type="text"
+                                                <form action="{{URL::to('user_register')}}" method="post">
+                                                    @csrf
+                                                    
+
+                                                    <input placeholder="Tên đăng nhập" name="UserName" type="text"
                                                         required="">
+                                                    
+                                                                                                
                                                     <input placeholder="Địa chỉ email" name="Email" type="email"
                                                         required="">
+                                                    
                                                     <input placeholder="Mật khẩu" name="Password" type="password"
                                                         required="">
-                                                    <input placeholder="Xác nhận mật khẩu" name="Password"
+
+                                                    <input placeholder="Xác nhận mật khẩu" name="RePassword"
                                                         type="password" required="">
+                                                    <?php
+                                                        $message = Session::get('message');
+                                                        if($message){
+                                                            echo '<p style="color:red; text-align:center">',$message,'</p>';
+                                                            Session::put('message',null);
+                                                        }
+                                                    ?>
                                                     <div class="sign-up">
                                                         <input type="submit" value="Tạo tài khoản" />
                                                     </div>
                                                 </form>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -160,10 +182,10 @@
                 </span></a>
                 
             </div>
-            <div style="padding-top: 10px ;">
+            <div style="padding-top: 20px;">
                 @if (Session::get('user_name') != null)
                         {{Session::get('user_name')}}
-                        <a href="{{URL::to('/logout')}}">Thoát</a>
+                        <a href="{{URL::to('/user_logout')}}">Thoát</a>
                         <script>
                             $('#myModal88').remove();
                         </script>

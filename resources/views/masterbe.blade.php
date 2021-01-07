@@ -36,6 +36,21 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('adminproducts.index') }}">
+                        <i class="fa fa-barcode mr-2"></i> Quản lý sản phẩm
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('adminmanufacturers.index') }}">
+                        <i class="fa fa-cubes mr-2"></i> Quản lý thương hiệu
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admincategorys.index') }}">
+                        <i class="fa fa-linode mr-2"></i> Quản lý phân loại
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <i class="fa fa-cogs mr-2"></i> Cấu hình hệ thống
                     </a>
@@ -87,6 +102,7 @@
     </div>
     <script src="{{ asset('BackEnd/js/popper.min.js') }}"></script>
     <script src="{{ asset('BackEnd/js/bootstrap.min.js') }}"></script>
+
 </body>
 
 </html>
